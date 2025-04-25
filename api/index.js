@@ -43,8 +43,8 @@ try {
   console.log("15. Webhook route set");
 
   console.log("16. Registering bot commands...");
-  bot.start((ctx) => ctx.reply("Bienvenue dans Memes War: Robbie ! Envoie /play pour jouer."));
-  bot.command("play", (ctx) => ctx.reply("Prêt à jouer à Memes War: Robbie ? Clique ici : https://memes-war-robbie.vercel.app"));
+  bot.start((ctx) => ctx.reply(" 🔥 Welcome to Memes War : Robbie 🔥 Send /play to launch the game 🎮"));
+  bot.command("play", (ctx) => ctx.reply("🎮 Ready to play? Click here : https://memes-war-robbie.vercel.app"));
   console.log("17. Bot commands registered");
 
   console.log("18. Starting express server...");
