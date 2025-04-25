@@ -95,9 +95,12 @@ try {
         return;
       }
     }
-
-    ctx.reply(" 🎮 Ready? 🎮  👉 https://memes-war-robbie.vercel.app");
+    ctx.replyWithHTML(
+      '🎮 Ready? 🎮 ? <a href="https://memes-war-robbie.vercel.app">Jouer maintenant</a>',
+      { reply_markup: { inline_keyboard: [[{ text: "Lancer le jeu", web_app: { url: "https://memes-war-robbie.vercel.app" } }]] } }
+    );
   });
+
   console.log("19. Bot commands registered");
 
   console.log("20. Starting express server...");
