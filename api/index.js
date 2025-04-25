@@ -29,16 +29,11 @@ try {
   });
   console.log("13. Telegraf bot created");
 
-  // IDs autorisés
-  const ALLOWED_USER_ID = 7970802345; // Remplace par ton user ID
-  const ALLOWED_GROUP_ID = -1002589061657; // Remplace par le chat ID du groupe
-
   console.log("14. Setting up webhook route...");
   app.post("/webhook", async (req, res) => {
-    console.log("Webhook route hit, body:", JSON.stringify(req.body, null, 2));
+    console.log("Received Telegram webhook:", JSON.stringify(req.body, null, 2));
     try {
       await bot.handleUpdate(req.body);
-      console.log("Webhook processed successfully");
       res.status(200).send("OK");
     } catch (error) {
       console.error("Error handling webhook:", error.message, error.stack);
@@ -47,73 +42,22 @@ try {
   });
   console.log("15. Webhook route set");
 
-  console.log("16. Setting up test route...");
-  app.get("/test", (req, res) => {
-    console.log("Test route hit");
-    res.send("Server is running");
-  });
-  console.log("17. Test route set");
+  console.log("16. Registering bot commands...");
+  bot.start((ctx) => ctx.reply(" 🔥 Welcome to Memes War : Robbie 🔥 Send /play to launch the game 🎮"));
+  bot.command("play", (ctx) => ctx.reply("🎮 Ready to play? Click here : https://memes-war-robbie.vercel.app"));
+  console.log("17. Bot commands registered");
 
-  console.log("18. Registering bot commands...");
-  bot.start((ctx) => {
-    const userId = ctx.from.id;
-    const chatId = ctx.chat.id;
-    const chatType = ctx.chat.type;
-
-    console.log("Processing /start command from:", ctx.from.username, "in chat:", chatType, "userId:", userId, "chatId:", chatId);
-
-    // Vérifier les autorisations
-    if (chatType === "private" && userId !== ALLOWED_USER_ID) {
-      ctx.reply("Sorry. You're not allowed to play in here. Join @robbietherobotmeme");
-      return;
-    }
-    if (chatType === "group" || chatType === "supergroup") {
-      if (chatId !== ALLOWED_GROUP_ID) {
-        ctx.reply("You cannot use the bot in this group. Join @robbietherobotmeme");
-        return;
-      }
-    }
-
-    ctx.reply(" 🔥 Welcome to Memes War: Robbie 🔥 Tap /play pour jouer.");
-  });
-
-  bot.command(["play", "play@MemesWarRobbieBot"], (ctx) => {
-    const userId = ctx.from.id;
-    const chatId = ctx.chat.id;
-    const chatType = ctx.chat.type;
-
-    console.log("Processing /play command from:", ctx.from.username, "in chat:", chatType, "userId:", userId, "chatId:", chatId);
-
-    // Vérifier les autorisations
-    if (chatType === "private" && userId !== ALLOWED_USER_ID) {
-      ctx.reply("Sorry. You're not allowed to play in here. Join @robbietherobotmeme");
-      return;
-    }
-    if (chatType === "group" || chatType === "supergroup") {
-      if (chatId !== ALLOWED_GROUP_ID) {
-        ctx.reply("You cannot use the bot in this group. Join @robbietherobotmeme");
-        return;
-      }
-    }
-    ctx.replyWithHTML(
-      '🎮 Ready? 🎮 ? <a href="https://memes-war-robbie.vercel.app">Jouer maintenant</a>',
-      { reply_markup: { inline_keyboard: [[{ text: "PLAY", web_app: { url: "https://memes-war-robbie.vercel.app" } }]] } }
-    );
-  });
-
-  console.log("19. Bot commands registered");
-
-  console.log("20. Starting express server...");
+  console.log("18. Starting express server...");
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
-    console.log(`21. Server running on port ${port}`);
+    console.log(`19. Server running on port ${port}`);
   });
 
-  console.log("22. Testing Telegram connection...");
+  console.log("20. Testing Telegram connection...");
   bot.telegram.getMe()
     .then((botInfo) => {
-      console.log(`23. Bot info: @${botInfo.username}`);
-      console.log("24. Bot ready for webhooks");
+      console.log(`21. Bot info: @${botInfo.username}`);
+      console.log("22. Bot ready for webhooks (no polling)");
     })
     .catch((err) => console.error("Error connecting to Telegram:", err.message, err.stack));
 
