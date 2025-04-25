@@ -64,17 +64,17 @@ try {
 
     // Vérifier les autorisations
     if (chatType === "private" && userId !== ALLOWED_USER_ID) {
-      ctx.reply("Désolé, ce bot est réservé à un utilisateur spécifique en privé.");
+      ctx.reply("Sorry. You're not allowed to play in here. Join @robbietherobotmeme");
       return;
     }
     if (chatType === "group" || chatType === "supergroup") {
       if (chatId !== ALLOWED_GROUP_ID) {
-        ctx.reply("Ce bot n'est actif que dans un groupe spécifique.");
+        ctx.reply("You cannot use the bot in this group. Join @robbietherobotmeme");
         return;
       }
     }
 
-    ctx.reply("Bienvenue dans Memes War: Robbie ! Envoie /play pour jouer.");
+    ctx.reply(" 🔥 Welcome to Memes War: Robbie 🔥 Tap /play pour jouer.");
   });
 
   bot.command("play", (ctx) => {
@@ -86,17 +86,17 @@ try {
 
     // Vérifier les autorisations
     if (chatType === "private" && userId !== ALLOWED_USER_ID) {
-      ctx.reply("Désolé, ce bot est réservé à un utilisateur spécifique en privé.");
+      ctx.reply("Sorry. You're not allowed to play in here. Join @robbietherobotmeme");
       return;
     }
     if (chatType === "group" || chatType === "supergroup") {
       if (chatId !== ALLOWED_GROUP_ID) {
-        ctx.reply("Ce bot n'est actif que dans un groupe spécifique.");
+        ctx.reply("You cannot use the bot in this group. Join @robbietherobotmeme");
         return;
       }
     }
 
-    ctx.reply("Prêt à jouer à Memes War: Robbie ? Clique ici : https://memes-war-robbie.vercel.app");
+    ctx.reply(" 🎮 Ready? 🎮  👉 https://memes-war-robbie.vercel.app");
   });
   console.log("19. Bot commands registered");
 
