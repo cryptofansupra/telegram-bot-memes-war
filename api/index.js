@@ -77,7 +77,7 @@ try {
     ctx.reply(" 🔥 Welcome to Memes War: Robbie 🔥 Tap /play pour jouer.");
   });
 
-  bot.command("play", (ctx) => {
+  bot.command(["play", "play@MemesWarRobbieBot"], (ctx) => {
     const userId = ctx.from.id;
     const chatId = ctx.chat.id;
     const chatType = ctx.chat.type;
@@ -97,7 +97,7 @@ try {
     }
     ctx.replyWithHTML(
       '🎮 Ready? 🎮 ? <a href="https://memes-war-robbie.vercel.app">Jouer maintenant</a>',
-      { reply_markup: { inline_keyboard: [[{ text: "Lancer le jeu", web_app: { url: "https://memes-war-robbie.vercel.app" } }]] } }
+      { reply_markup: { inline_keyboard: [[{ text: "PLAY", web_app: { url: "https://memes-war-robbie.vercel.app" } }]] } }
     );
   });
 
