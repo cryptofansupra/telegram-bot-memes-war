@@ -82,13 +82,6 @@ try {
     ctx.reply("Welcome to Memes War: Robbie ! The first game involving the cute but not week meme on Supra !  Tap /play to launch the game 🤖");
   });
 
-  bot.command("play", (ctx) => {
-    console.log("Processing /play command from:", ctx.from.username, "in chat:", ctx.chat.type);
-    ctx.replyWithHTML(
-      '🎮  Spartan, are you ready ?  🎮',
-      { reply_markup: { inline_keyboard: [[{ text: "PLAY", web_app: { url: "https://memes-war-robbie.vercel.app" } }]] } }
-    );
-  });
   bot.command(["play", "play@MemesWarRobbieBot"], async (ctx) => {
     console.log("Processing /play command from:", ctx.from.username, "in chat:", ctx.chat.type);
     try {
