@@ -85,7 +85,7 @@ try {
   bot.command(["play", "play@MemesWarRobbieBot"], async (ctx) => {
     console.log("Processing /play command from:", ctx.from.username, "in chat:", ctx.chat.type);
     try {
-      await ctx.reply(" 🎮  Spartan, are you ready ?  🎮");
+      await ctx.reply(" 🎮  Spartan, are you ready ?  🎮  https://t.me/MemesWarRobbieBot/MemesWarRobbieBot");
       console.log("Sent /play response successfully");
     } catch (error) {
       console.error("Error sending /play response:", error.message, error.stack);
