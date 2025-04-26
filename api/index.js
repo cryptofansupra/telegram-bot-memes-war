@@ -89,6 +89,15 @@ try {
       { reply_markup: { inline_keyboard: [[{ text: "PLAY", web_app: { url: "https://memes-war-robbie.vercel.app" } }]] } }
     );
   });
+  bot.command(["play", "play@MemesWarRobbieBot"], async (ctx) => {
+    console.log("Processing /play command from:", ctx.from.username, "in chat:", ctx.chat.type);
+    try {
+      await ctx.reply(" 🎮  Spartan, are you ready ?  🎮");
+      console.log("Sent /play response successfully");
+    } catch (error) {
+      console.error("Error sending /play response:", error.message, error.stack);
+    }
+  });
   console.log("19. Bot commands registered");
 
   console.log("20. Starting express server...");
